@@ -7,8 +7,12 @@
 <meta name="theme-color" content="#fbf6ed">
 <title>Cecilia Abigail — Mis XV Años</title>
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Allura&display=swap");
-  @import url("https://db.onlinewebfonts.com/c/a19e098c78d2c542b561fe6e2eb7d237?family=Breathing");
+  @font-face{
+    font-family:"Breathing";
+    src:local("Breathing");
+    font-weight:400;
+    font-style:normal;
+  }
   :root{
     color-scheme: only light;
     --ink:#8a6a3d;
@@ -93,6 +97,7 @@
     color:#9b6b2d;
     font-family:Georgia,"Times New Roman",serif;
   }
+  .section-title.script{font-family:"Breathing", cursive !important;}
   .cover .script{
     font-family:"Allura","Brush Script MT","Segoe Script","Snell Roundhand",cursive;
     font-weight:400;
@@ -202,7 +207,7 @@
   }
   .section-title{
     margin:0 0 14px;
-    font-family:"Breathing", cursive;
+    font-family:"Breathing", cursive !important;
     font-size:clamp(31px,5vw,48px);
     color:#a47739;
     font-weight:400;
