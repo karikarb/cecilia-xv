@@ -113,6 +113,13 @@
   .cover .name span + span{
     margin-top:.10em;
   }
+  /* Mantener intacta la tipografía original de los títulos internos */
+  .section:not(.cover) h2,
+  .section:not(.cover) .section-title,
+  .section:not(.cover) .title,
+  .section:not(.cover) .heading{
+    font-family:inherit;
+  }
   .cover .gold-rule{
     display:block;
     margin:5vh auto 3.5vh;
