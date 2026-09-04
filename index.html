@@ -26,9 +26,18 @@
   }
   body{overflow-x:hidden}
   a{color:inherit}
-  .light-section{background:#fff!important}
-  .light-section .bg{opacity:.20}
-  .light-section .veil{background:#fff!important;opacity:.80}
+  .light-section{background:#fbf6ed!important}
+  .light-section .bg{opacity:1}
+  .light-section .veil{display:none}
+  .light-panel{
+    width:min(820px,88vw);
+    margin:auto;
+    padding:clamp(42px,6vw,72px) clamp(28px,6vw,70px);
+    background:rgba(255,253,249,.94);
+    border:1px solid rgba(181,138,69,.38);
+    box-shadow:0 12px 38px rgba(122,89,43,.10);
+    text-align:center;
+  }
   .section{
     position:relative;
     min-height:100svh;
@@ -97,13 +106,19 @@
     background:linear-gradient(90deg,transparent,var(--gold),transparent);
   }
   .date{
-    display:flex;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
     align-items:center;
     justify-content:center;
-    gap:clamp(12px,4vw,34px);
+    gap:clamp(12px,3vw,30px);
     color:#80613a;
     margin:24px auto 32px;
+    max-width:570px;
   }
+  .date > div{display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .date .date-left{justify-self:end}
+  .date .date-right{justify-self:start}
+  .date .date-right .month,.date .date-right .year{text-align:center;width:100%}
   .date .dow,.date .month{
     letter-spacing:.24em;
     text-transform:uppercase;
@@ -218,11 +233,13 @@
       object-fit:cover;
       object-position:center;
     }
-    .content{width:94vw;padding:7vh 4vw}
+    .content{width:94vw;padding:7vh 3vw}
+    .light-panel{width:94vw;padding:42px 16px;background:rgba(255,253,249,.95)}
     .card{padding:28px 18px}
-    .date{gap:10px}
-    .date .dow,.date .month{font-size:12px;letter-spacing:.16em}
+    .date{grid-template-columns:1fr auto 1fr;gap:7px;max-width:100%;margin-top:22px}
+    .date .dow,.date .month{font-size:12px;letter-spacing:.14em}
     .date .year{font-size:18px}
+    .date .day{font-size:78px}
     .btn{width:min(300px,84vw);margin:10px 0 0}
   }
 
@@ -234,10 +251,12 @@
   <img class="bg" src="fondo-cecilia.png" alt="" aria-hidden="true">
   <div class="veil"></div>
   <main class="content">
+    <div class="light-panel">
     <p class="eyebrow">MIS XV AÑOS</p>
     <h1 class="script name"><span>Cecilia</span><span>Abigail</span></h1>
     <div class="gold-rule"></div>
     <p class="intro">Como las flores en primavera, este es el comienzo de una nueva y hermosa etapa. Hay momentos en la vida que imaginamos durante mucho tiempo, y compartirlos con las personas que queremos los hace aún más especiales.<br><br>¡Te invito a celebrar mis 15 años!</p>
+    </div>
   </main>
 </section>
 
@@ -245,10 +264,12 @@
   <img class="bg" src="fondo-cecilia.png" alt="" aria-hidden="true">
   <div class="veil"></div>
   <div class="content">
+    <div class="light-panel">
     <h2 class="script section-title">¡Prepárate!</h2>
     <div class="date">
-      <div><div class="dow">Viernes</div><div class="day">02</div></div>
-      <div><div class="month">Oct</div><div class="year">2026</div></div>
+      <div class="date-left"><div class="dow">Viernes</div></div>
+      <div><div class="day">02</div></div>
+      <div class="date-right"><div class="month">OCT</div><div class="year">2026</div></div>
     </div>
     <p class="count-label">Solamente faltan:</p>
     <div id="countdown" aria-live="polite">
@@ -256,6 +277,7 @@
       <div class="unit"><span class="num" id="hours">--</span><span class="lab">horas</span></div>
       <div class="unit"><span class="num" id="mins">--</span><span class="lab">minutos</span></div>
       <div class="unit"><span class="num" id="secs">--</span><span class="lab">segundos</span></div>
+    </div>
     </div>
   </div>
 </section>
