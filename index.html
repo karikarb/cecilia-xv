@@ -305,82 +305,53 @@
 
 .custom-icon{display:block;margin:0 auto 16px;width:110px;height:100px}.custom-icon.disco{width:108px;height:130px;margin-bottom:6px}.custom-icon.hanger{width:145px;height:118px;margin-bottom:8px}.custom-icon.envelope{width:125px;height:80px;margin-bottom:14px}.custom-icon.gift{width:110px;height:110px;margin-bottom:10px}@media(max-width:600px){.custom-icon{width:100px;height:90px}.custom-icon.disco{width:100px;height:120px}.custom-icon.hanger{width:132px;height:108px}.custom-icon.envelope{width:116px;height:75px}.custom-icon.gift{width:102px;height:102px}}
 
-  /* MÚSICA — botón discreto */
-  .music-control{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    z-index:9999;
-    display:flex;
-    align-items:center;
-    gap:9px;
-    font-family:Georgia,"Times New Roman",serif;
-  }
-  #music-btn{
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    border:1px solid rgba(181,138,69,.72);
-    background:rgba(255,252,247,.94);
-    color:#9b6b2d;
-    box-shadow:0 5px 18px rgba(122,89,43,.16);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    font-size:25px;
-    line-height:1;
-    padding:0;
-    -webkit-tap-highlight-color:transparent;
-    transition:transform .2s ease, background .2s ease;
-  }
-  #music-btn:active{transform:scale(.94)}
-  #music-icon{display:block; transform:translateY(-1px)}
-  #music-label{
-    display:none;
-    padding:7px 11px;
-    border:1px solid rgba(181,138,69,.28);
-    border-radius:999px;
-    background:rgba(255,252,247,.94);
-    color:#7a5a32;
-    font-size:12px;
-    letter-spacing:.04em;
-    box-shadow:0 4px 14px rgba(122,89,43,.10);
-    white-space:nowrap;
-  }
-  #yt-player{
-    position:fixed;
-    width:1px;
-    height:1px;
-    left:-10px;
-    bottom:-10px;
-    border:0;
-    opacity:.001;
-    pointer-events:none;
-  }
-  @media (max-width:600px){
-    .music-control{right:14px;bottom:14px}
-    #music-btn{width:46px;height:46px;font-size:24px}
-  }
+/* Música: único añadido; no modifica las tipografías existentes */
+.music-control{
+  position:fixed; right:18px; bottom:18px; z-index:9999;
+  display:flex; align-items:center; gap:9px;
+  font-family:Georgia,"Times New Roman",serif;
+}
+#music-btn{
+  width:48px; height:48px; border-radius:50%;
+  border:1px solid rgba(181,138,69,.72);
+  background:rgba(255,252,247,.94); color:#9b6b2d;
+  box-shadow:0 5px 18px rgba(122,89,43,.16);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; font-size:25px; line-height:1; padding:0;
+  -webkit-tap-highlight-color:transparent;
+}
+#music-btn:active{transform:scale(.94)}
+#music-label{
+  display:none; padding:7px 11px;
+  border:1px solid rgba(181,138,69,.28); border-radius:999px;
+  background:rgba(255,252,247,.94); color:#7a5a32;
+  font-size:12px; letter-spacing:.04em; white-space:nowrap;
+  box-shadow:0 4px 14px rgba(122,89,43,.10);
+}
+#yt-player{
+  position:fixed; width:1px; height:1px; left:-10px; bottom:-10px;
+  border:0; opacity:.001; pointer-events:none;
+}
+@media(max-width:600px){
+  .music-control{right:14px;bottom:14px}
+  #music-btn{width:46px;height:46px;font-size:24px}
+}
 
 </style>
 </head>
 <body>
-<!-- Música: Pensamientos — Airbag (video oficial de YouTube) -->
+<!-- Música: Pensamientos — Airbag -->
 <div id="music-control" class="music-control" aria-label="Música">
   <button id="music-btn" type="button" aria-label="Reproducir música" aria-pressed="false">
     <span id="music-icon">♪</span>
   </button>
   <div id="music-label">Pensamientos · Airbag</div>
 </div>
-
-<iframe
-  id="yt-player"
+<iframe id="yt-player"
   title="Pensamientos — Airbag"
-  src="https://www.youtube-nocookie.com/embed/6gDGFfrOMdI?enablejsapi=1&controls=0&rel=0&playsinline=1&loop=1&playlist=6gDGFfrOMdI"
+  src="https://www.youtube-nocookie.com/embed/6gDGFfrOMdI?enablejsapi=1&controls=0&rel=0&playsinline=1&loop=1&playlist=6gDGFfrOMdI&autoplay=1"
   allow="autoplay; encrypted-media"
-  aria-hidden="true">
-</iframe>
+  aria-hidden="true"></iframe>
 
 <section class="section cover light-section">
   <img class="bg" src="fondo-cecilia.png" alt="" aria-hidden="true">
@@ -475,74 +446,58 @@
 
 <script>
 (function(){
-  const btn = document.getElementById("music-btn");
-  const icon = document.getElementById("music-icon");
-  const label = document.getElementById("music-label");
-  const frame = document.getElementById("yt-player");
-  let playing = false;
-  let player = null;
-  let apiReady = false;
+  const btn=document.getElementById("music-btn");
+  const icon=document.getElementById("music-icon");
+  const label=document.getElementById("music-label");
+  let player=null, apiReady=false, playing=false;
 
-  // YouTube IFrame API: keeps the official video embedded and uses the visitor's click
-  // to start playback, which is more reliable on mobile browsers.
-  function loadYouTubeAPI(){
-    if (window.YT && window.YT.Player) {
-      createPlayer();
-      return;
-    }
-    const tag = document.createElement("script");
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.head.appendChild(tag);
-    window.onYouTubeIframeAPIReady = createPlayer;
+  function setPlaying(v){
+    playing=v;
+    btn.setAttribute("aria-pressed",String(v));
+    btn.setAttribute("aria-label",v?"Pausar música":"Reproducir música");
+    icon.textContent=v?"Ⅱ":"♪";
+    label.style.display=v?"block":"none";
   }
-
   function createPlayer(){
-    if (player) return;
-    player = new YT.Player("yt-player", {
-      events: {
-        onReady: function(event){
-          apiReady = true;
-          event.target.setVolume(28);
-          event.target.setLoop(true);
+    if(player) return;
+    player=new YT.Player("yt-player",{
+      playerVars:{controls:0,rel:0,playsinline:1,loop:1,playlist:"6gDGFfrOMdI"},
+      events:{
+        onReady:function(e){
+          apiReady=true;
+          e.target.setVolume(28);
+          // Intento de reproducción automática al cargar. Los navegadores pueden bloquear
+          // el audio con sonido hasta que exista una interacción del visitante.
+          try{ e.target.playVideo(); }catch(err){}
         },
-        onStateChange: function(event){
-          if (event.data === YT.PlayerState.PLAYING) setPlaying(true);
-          if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) setPlaying(false);
+        onStateChange:function(e){
+          if(e.data===YT.PlayerState.PLAYING)setPlaying(true);
+          if(e.data===YT.PlayerState.PAUSED||e.data===YT.PlayerState.ENDED)setPlaying(false);
         }
-      },
-      playerVars: {
-        controls:0,
-        rel:0,
-        playsinline:1,
-        loop:1,
-        playlist:"6gDGFfrOMdI"
       }
     });
   }
+  window.onYouTubeIframeAPIReady=createPlayer;
+  const tag=document.createElement("script");
+  tag.src="https://www.youtube.com/iframe_api";
+  document.head.appendChild(tag);
 
-  function setPlaying(value){
-    playing = value;
-    btn.setAttribute("aria-pressed", String(value));
-    btn.setAttribute("aria-label", value ? "Pausar música" : "Reproducir música");
-    icon.textContent = value ? "Ⅱ" : "♪";
-    label.style.display = value ? "block" : "none";
+  function startOnInteraction(){
+    if(!apiReady || playing) return;
+    try{player.setVolume(28);player.playVideo();}catch(err){}
   }
 
-  btn.addEventListener("click", function(){
-    if (!player || !apiReady) {
-      loadYouTubeAPI();
-      // If the API needs a moment, the iframe itself will become ready shortly.
-      return;
-    }
-    if (playing) {
-      player.pauseVideo();
-    } else {
-      player.setVolume(28);
-      player.playVideo();
-    }
+  btn.addEventListener("click",function(){
+    if(!apiReady) return;
+    if(playing) player.pauseVideo();
+    else startOnInteraction();
   });
 
-  loadYouTubeAPI();
+  // Si el navegador bloquea el autoplay, la primera interacción del visitante
+  // (toque/clic/tecla) inicia la música sin tener que pulsar el botón musical.
+  ["pointerdown","touchstart","keydown"].forEach(function(evt){
+    document.addEventListener(evt,startOnInteraction,{once:true,passive:true});
+  });
 })();
 </script>
 
