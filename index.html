@@ -3,235 +3,270 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="only light"><meta name="supported-color-schemes" content="light">
-<meta name="theme-color" content="#fbf6ed">
+<meta name="color-scheme" content="only light">
+<meta name="supported-color-schemes" content="light">
+<meta name="theme-color" content="#fbf7ef">
 <title>Cecilia Abigail — Mis XV Años</title>
 <style>
-  :root{
-    color-scheme: only light;
-    --ink:#8a6a3d;
-    --ink-dark:#6e512d;
-    --gold:#b58a45;
-    --paper:#fbf6ed;
+:root{
+  --paper:#fbf7ef;
+  --paper2:#fffaf2;
+  --gold:#a87832;
+  --gold2:#c69a55;
+  --ink:#735a3a;
+  color-scheme:only light;
+}
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--paper)!important;
+  color:var(--ink)!important;
+  font-family:Georgia,"Times New Roman",serif;
+  -webkit-text-size-adjust:100%;
+}
+body{overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.section{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:var(--paper)!important;
+  isolation:isolate;
+}
+.bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  z-index:-2;
+  user-select:none;
+  pointer-events:none;
+}
+.veil{
+  position:absolute;
+  inset:0;
+  background:rgba(255,252,246,.12);
+  z-index:-1;
+}
+.content{
+  width:min(900px,92vw);
+  padding:8vh 5vw;
+  text-align:center;
+}
+.script{
+  font-family:"Brush Script MT","Segoe Script","Snell Roundhand",cursive;
+  font-weight:400;
+  color:var(--gold);
+  line-height:.95;
+}
+.cover .content{padding-top:8vh}
+.kicker{
+  margin:0 0 20px;
+  font-size:clamp(15px,2.4vw,23px);
+  letter-spacing:.30em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.name{
+  margin:0;
+  font-size:clamp(76px,12vw,150px);
+  line-height:.80;
+  letter-spacing:-.025em;
+}
+.name span{display:block}
+.rule{
+  width:min(290px,62vw);
+  height:1px;
+  margin:34px auto 27px;
+  background:linear-gradient(90deg,transparent,var(--gold2),transparent);
+}
+.intro{
+  max-width:650px;
+  margin:0 auto;
+  font-size:clamp(17px,2.5vw,22px);
+  line-height:1.62;
+  color:#775f40;
+}
+.date{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(14px,4vw,38px);
+  margin:22px auto 34px;
+  color:#795e3d;
+}
+.date .dow,.date .month{
+  font-size:clamp(14px,2.2vw,21px);
+  letter-spacing:.23em;
+  text-transform:uppercase;
+}
+.date .day{
+  color:var(--gold);
+  font-size:clamp(82px,13vw,135px);
+  line-height:.72;
+}
+.date .year{
+  margin-top:8px;
+  font-size:clamp(19px,3vw,29px);
+  letter-spacing:.18em;
+}
+.count-label{
+  margin:0 0 13px;
+  font-size:clamp(15px,2.3vw,21px);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+#countdown{
+  display:flex;
+  justify-content:center;
+  gap:clamp(8px,2.6vw,25px);
+  flex-wrap:wrap;
+}
+.unit{min-width:68px}
+.num{
+  display:block;
+  color:var(--gold);
+  font-size:clamp(31px,5vw,51px);
+  line-height:1;
+}
+.lab{
+  display:block;
+  margin-top:7px;
+  font-size:11px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+.card{
+  width:min(660px,100%);
+  margin:auto;
+  padding:38px clamp(22px,5vw,58px);
+  background:rgba(255,251,244,.84);
+  border:1px solid rgba(168,120,50,.42);
+  box-shadow:0 12px 35px rgba(112,80,37,.10);
+  backdrop-filter:blur(3px);
+}
+.title{
+  margin:0 0 15px;
+  font-size:clamp(40px,6vw,62px);
+}
+.icon{
+  width:82px;
+  height:82px;
+  margin:0 auto 18px;
+  display:block;
+}
+.icon *{
+  stroke:var(--gold);
+  fill:none;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.event-main{
+  margin:8px 0 14px;
+  color:#755a38;
+  font-size:clamp(31px,5vw,48px);
+}
+.event-sub{
+  margin:7px 0;
+  font-size:clamp(16px,2.5vw,21px);
+  letter-spacing:.17em;
+  text-transform:uppercase;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:220px;
+  min-height:51px;
+  margin-top:21px;
+  padding:13px 24px;
+  border:1px solid var(--gold);
+  border-radius:999px;
+  background:rgba(255,249,239,.96);
+  color:#76592f!important;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-size:14px;
+  box-shadow:0 4px 14px rgba(112,80,37,.08);
+}
+.dress{
+  max-width:650px;
+  margin:8px auto 0;
+  font-size:clamp(17px,2.6vw,22px);
+  line-height:1.7;
+}
+.bank{
+  margin-top:18px;
+  font-size:clamp(16px,2.5vw,21px);
+  line-height:1.9;
+}
+.bank strong{color:#8a6533}
+.alias{
+  display:inline-block;
+  margin:8px 0;
+  padding:6px 16px;
+  border:1px solid rgba(168,120,50,.35);
+  border-radius:999px;
+  background:rgba(255,250,242,.82);
+}
+.footer{
+  margin-top:42px;
+  font-size:13px;
+  letter-spacing:.08em;
+}
+
+/* Samsung Internet forced-dark countermeasure.
+   If Samsung reports dark mode, invert the rendered page once to cancel
+   the browser's forced inversion while preserving the original artwork. */
+@supports (filter: invert(1)){
+  @media (prefers-color-scheme:dark){
+    body{filter:invert(1) hue-rotate(180deg);}
+    body img, body svg{filter:invert(1) hue-rotate(180deg);}
   }
-  *{box-sizing:border-box}
-  html,body{
-    margin:0;
-    padding:0;
-    background:#fbf6ed !important;
-    color:var(--ink-dark) !important;
-    font-family: Georgia, "Times New Roman", serif;
-    forced-color-adjust:none;
-    -webkit-text-size-adjust:100%;
-  }
-  body{overflow-x:hidden}
-  a{color:inherit}
-  .section{
-    position:relative;
-    min-height:100svh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    isolation:isolate;
-    background:#fbf6ed;
-  }
-  .section + .section{border-top:1px solid rgba(181,138,69,.10)}
+}
+
+@media (max-width:600px){
+  .section{min-height:100svh}
   .bg{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
+    content:url("fondo-cecilia-mobile.png");
     object-fit:cover;
     object-position:center;
-    z-index:-2;
-    pointer-events:none;
-    user-select:none;
-    forced-color-adjust:none;
   }
-  .veil{
-    position:absolute;
-    inset:0;
-    background:rgba(255,251,244,.06);
-    z-index:-1;
-    pointer-events:none;
-    forced-color-adjust:none;
-  }
-  .content{
-    width:min(860px,92vw);
-    text-align:center;
-    padding:8vh 5vw;
-    margin:auto;
-  }
-  .cover .content{padding-top:9vh}
-  .eyebrow{
-    margin:0 0 14px;
-    font-size:clamp(14px,2.2vw,20px);
-    letter-spacing:.28em;
-    text-transform:uppercase;
-    color:var(--gold);
-  }
-  .script{
-    font-family:"Brush Script MT","Segoe Script","Snell Roundhand",cursive;
-    font-weight:400;
-    line-height:.92;
-    color:#a47739;
-    text-shadow:0 1px 0 rgba(255,255,255,.55);
-  }
-  .mis{font-size:clamp(48px,9vw,92px); margin:0}
-  .name{font-size:clamp(58px,11vw,140px); margin:6px 0 0; white-space:nowrap}
-  .intro{
-    max-width:650px;
-    margin:0 auto;
-    font-size:clamp(17px,2.7vw,23px);
-    line-height:1.65;
-    color:#7c6240;
-  }
-  .gold-rule{
-    width:min(260px,60vw);
-    height:1px;
-    margin:28px auto;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  }
-  .date{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:clamp(12px,4vw,34px);
-    color:#80613a;
-    margin:24px auto 32px;
-  }
-  .date .dow,.date .month{
-    letter-spacing:.24em;
-    text-transform:uppercase;
-    font-size:clamp(14px,2vw,20px);
-  }
-  .date .day{
-    font-size:clamp(72px,13vw,130px);
-    line-height:.75;
-    color:#a47739;
-  }
-  .date .year{font-size:clamp(20px,3vw,30px); letter-spacing:.18em}
-  .count-label{
-    margin:0 0 10px;
-    font-size:clamp(15px,2.4vw,21px);
-    letter-spacing:.16em;
-    text-transform:uppercase;
-  }
-  #countdown{
-    display:flex;
-    justify-content:center;
-    gap:clamp(9px,2.4vw,22px);
-    flex-wrap:wrap;
-  }
-  .unit{min-width:72px}
-  .num{
-    display:block;
-    font-size:clamp(31px,5vw,50px);
-    color:#a47739;
-    line-height:1;
-  }
-  .lab{
-    display:block;
-    margin-top:6px;
-    font-size:11px;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-  }
-  .card{
-    max-width:650px;
-    margin:0 auto;
-    padding:34px clamp(22px,5vw,55px);
-    background:rgba(255,252,247,.73);
-    border:1px solid rgba(181,138,69,.28);
-    box-shadow:0 10px 35px rgba(122,89,43,.08);
-    backdrop-filter:blur(2px);
-  }
-  .section-title{
-    margin:0 0 14px;
-    font-size:clamp(31px,5vw,48px);
-    color:#a47739;
-    font-weight:400;
-  }
-  .event-main{
-    font-size:clamp(30px,5vw,48px);
-    margin:12px 0;
-    color:#76562f;
-  }
-  .event-sub{
-    font-size:clamp(16px,2.4vw,21px);
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    margin:8px 0;
-  }
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    min-width:190px;
-    min-height:50px;
-    margin:18px 8px 0;
-    padding:13px 22px;
-    border:1px solid #b58a45;
-    border-radius:999px;
-    background:rgba(255,250,241,.94);
-    color:#7a5a32 !important;
-    text-decoration:none;
-    font-size:15px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    box-shadow:0 4px 15px rgba(122,89,43,.08);
-    -webkit-tap-highlight-color:transparent;
-  }
-  .dress{
-    font-size:clamp(18px,2.8vw,23px);
-    line-height:1.7;
-    margin:0 auto;
-    max-width:650px;
-  }
-  .bank{
-    line-height:1.9;
-    font-size:clamp(16px,2.5vw,21px);
-  }
-  .bank strong{color:#8d6938}
-  .alias{
-    display:inline-block;
-    margin-top:10px;
-    padding:7px 16px;
-    border:1px solid rgba(181,138,69,.35);
-    border-radius:999px;
-    background:rgba(255,252,247,.75);
-    color:#7a5a32;
-  }
-  .small{font-size:13px;letter-spacing:.08em}
-  .footer-space{min-height:16vh}
-  @media (max-width:600px){
-    .bg{content:url("fondo-cecilia-mobile.png");}
-    .name{font-size:clamp(54px,10.5vw,86px);}
-    .intro{font-size:clamp(16px,4.1vw,20px); line-height:1.55;}
-
-    .section{min-height:100svh}
-    .bg{
-      object-fit:cover;
-      object-position:center;
-    }
-    .content{width:94vw;padding:7vh 4vw}
-    .card{padding:28px 18px}
-    .date{gap:10px}
-    .date .dow,.date .month{font-size:12px;letter-spacing:.16em}
-    .date .year{font-size:18px}
-    .btn{width:min(300px,84vw);margin:10px 0 0}
-  }
+  .content{width:94vw;padding:7vh 4vw}
+  .cover .content{padding-top:7vh}
+  .kicker{font-size:13px;letter-spacing:.25em;margin-bottom:26px}
+  .name{font-size:clamp(64px,16vw,105px);line-height:.80}
+  .rule{margin:30px auto 25px}
+  .intro{font-size:clamp(16px,4.2vw,20px);line-height:1.55}
+  .card{padding:31px 18px}
+  .icon{width:72px;height:72px}
+  .date{gap:11px}
+  .date .dow,.date .month{font-size:12px;letter-spacing:.15em}
+  .date .year{font-size:17px}
+  .date .day{font-size:78px}
+  .unit{min-width:62px}
+  .num{font-size:34px}
+  .lab{font-size:10px}
+  .btn{width:min(310px,86vw)}
+}
 </style>
 </head>
 <body>
+
 <section class="section cover">
   <img class="bg" src="fondo-cecilia.png" alt="" aria-hidden="true">
   <div class="veil"></div>
   <main class="content">
-    <p class="eyebrow">Mis XV Años</p>
-    <div class="script name">Cecilia Abigail</div>
-    <div class="gold-rule"></div>
+    <p class="kicker">MIS XV AÑOS</p>
+    <h1 class="script name"><span>Cecilia</span><span>Abigail</span></h1>
+    <div class="rule"></div>
     <p class="intro">Como las flores en primavera, este es el comienzo de una nueva y hermosa etapa. Hay momentos en la vida que imaginamos durante mucho tiempo, y compartirlos con las personas que queremos los hace aún más especiales.<br><br>¡Te invito a celebrar mis 15 años!</p>
   </main>
 </section>
@@ -240,13 +275,13 @@
   <img class="bg" src="fondo-cecilia.png" alt="" aria-hidden="true">
   <div class="veil"></div>
   <div class="content">
-    <h2 class="script section-title">¡Prepárate!</h2>
+    <h2 class="script title">¡Prepárate!</h2>
     <div class="date">
-      <div><div class="dow">Viernes</div><div class="day">02</div></div>
-      <div><div class="month">Oct</div><div class="year">2026</div></div>
+      <div><div class="dow">VIERNES</div><div class="day">02</div></div>
+      <div><div class="month">OCT</div><div class="year">2026</div></div>
     </div>
     <p class="count-label">Solamente faltan:</p>
-    <div id="countdown" aria-live="polite">
+    <div id="countdown">
       <div class="unit"><span class="num" id="days">--</span><span class="lab">días</span></div>
       <div class="unit"><span class="num" id="hours">--</span><span class="lab">horas</span></div>
       <div class="unit"><span class="num" id="mins">--</span><span class="lab">minutos</span></div>
@@ -260,7 +295,13 @@
   <div class="veil"></div>
   <div class="content">
     <div class="card">
-      <h2 class="script section-title">La celebración</h2>
+      <svg class="icon" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="43" r="24"/>
+        <path d="M26 43h48M30 31h40M30 55h40M38 22l8 42M54 20l-7 45M67 25l-13 36M32 69l36 0"/>
+        <path d="M50 67v12M43 84h14"/>
+        <path d="M23 82l5-4M77 82l-5-4M19 70l6 1M81 70l-6 1"/>
+      </svg>
+      <h2 class="script title">La celebración</h2>
       <div class="event-main">21:00 HORAS</div>
       <div class="event-sub">Villa Victoria</div>
       <div class="event-sub">Centro de Eventos</div>
@@ -274,9 +315,14 @@
   <div class="veil"></div>
   <div class="content">
     <div class="card">
-      <h2 class="script section-title">Dress Code</h2>
+      <svg class="icon" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M28 25h44M33 25c0 18 10 16 10 28v22M67 25c0 18-10 16-10 28v22"/>
+        <path d="M43 75h14M39 82h22"/>
+        <path d="M35 25c0-7 5-12 15-12s15 5 15 12"/>
+      </svg>
+      <h2 class="script title">Dress Code</h2>
       <p class="event-sub">Elegante</p>
-      <p class="dress">Favor evitar los colores <strong>Plateado, beige y champagne</strong>, ya que están reservados exclusivamente para la quinceañera.</p>
+      <p class="dress">Favor evitar los colores <strong>plateado, beige y champagne</strong>, ya que están reservados exclusivamente para la quinceañera.</p>
     </div>
   </div>
 </section>
@@ -286,7 +332,13 @@
   <div class="veil"></div>
   <div class="content">
     <div class="card">
-      <h2 class="script section-title">¿Podrás asistir?</h2>
+      <svg class="icon" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M20 36h60v43H20z"/>
+        <path d="M50 36v43M20 51h60"/>
+        <path d="M50 36L39 22l-18 9 9 16M50 36l11-14 18 9-9 16"/>
+        <path d="M50 22v14"/>
+      </svg>
+      <h2 class="script title">¿Podrás asistir?</h2>
       <p class="dress">TU PRESENCIA ES MUY IMPORTANTE PARA MÍ Y MI FAMILIA.<br>FAVOR CONFIRMARLA.</p>
       <a class="btn" href="https://forms.gle/cGZFZ9ENdTzK1KVG8" target="_blank" rel="noopener">Confirmar asistencia</a>
     </div>
@@ -298,39 +350,36 @@
   <div class="veil"></div>
   <div class="content">
     <div class="card">
-      <h2 class="script section-title">Un pequeño obsequio</h2>
+      <svg class="icon" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M22 36h56v43H22z"/>
+        <path d="M50 36v43M22 51h56"/>
+        <path d="M50 36L39 22l-18 9 9 16M50 36l11-14 18 9-9 16"/>
+        <path d="M50 22v14"/>
+      </svg>
+      <h2 class="script title">Un pequeño obsequio</h2>
       <p class="dress">Si deseas hacerme un pequeño obsequio, te dejo mis datos bancarios.</p>
       <div class="bank">
         <strong>BANCO ITAU</strong><br>
         <span class="alias">ALIAS: CI 410.082</span><br>
         <strong>BLANCA BATAGLIA</strong>
       </div>
-      <div class="footer-space"></div>
-      <div class="small">Gracias por ser parte de este momento tan especial ♡</div>
+      <div class="footer">Gracias por ser parte de este momento tan especial ♡</div>
     </div>
   </div>
 </section>
 
 <script>
 (function(){
-  // Evento: viernes 2 de octubre de 2026, 21:00 en Paraguay (UTC-3).
   const target = new Date("2026-10-02T21:00:00-03:00").getTime();
-  const ids = ["days","hours","mins","secs"];
   function update(){
-    let diff = target - Date.now();
-    if(diff < 0) diff = 0;
-    const s = Math.floor(diff/1000);
-    const d = Math.floor(s/86400);
-    const h = Math.floor((s%86400)/3600);
-    const m = Math.floor((s%3600)/60);
-    const sec = s%60;
-    document.getElementById("days").textContent = String(d);
-    document.getElementById("hours").textContent = String(h).padStart(2,"0");
-    document.getElementById("mins").textContent = String(m).padStart(2,"0");
-    document.getElementById("secs").textContent = String(sec).padStart(2,"0");
+    let d = Math.max(0,target-Date.now());
+    const s=Math.floor(d/1000);
+    document.getElementById("days").textContent=Math.floor(s/86400);
+    document.getElementById("hours").textContent=String(Math.floor(s%86400/3600)).padStart(2,"0");
+    document.getElementById("mins").textContent=String(Math.floor(s%3600/60)).padStart(2,"0");
+    document.getElementById("secs").textContent=String(s%60).padStart(2,"0");
   }
-  update();
-  setInterval(update,1000);
+  update(); setInterval(update,1000);
 })();
 </script>
 </body>
