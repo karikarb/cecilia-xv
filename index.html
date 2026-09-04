@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="light only">
+<meta name="color-scheme" content="only light"><meta name="supported-color-schemes" content="light">
 <meta name="theme-color" content="#fbf6ed">
 <title>Cecilia Abigail — Mis XV Años</title>
 <style>
@@ -79,7 +79,7 @@
     text-shadow:0 1px 0 rgba(255,255,255,.55);
   }
   .mis{font-size:clamp(48px,9vw,92px); margin:0}
-  .name{font-size:clamp(74px,13vw,140px); margin:6px 0 0}
+  .name{font-size:clamp(58px,11vw,140px); margin:6px 0 0; white-space:nowrap}
   .intro{
     max-width:650px;
     margin:0 auto;
@@ -206,6 +206,10 @@
   .small{font-size:13px;letter-spacing:.08em}
   .footer-space{min-height:16vh}
   @media (max-width:600px){
+    .bg{content:url("fondo-cecilia-mobile.png");}
+    .name{font-size:clamp(54px,10.5vw,86px);}
+    .intro{font-size:clamp(16px,4.1vw,20px); line-height:1.55;}
+
     .section{min-height:100svh}
     .bg{
       object-fit:cover;
@@ -226,7 +230,6 @@
   <div class="veil"></div>
   <main class="content">
     <p class="eyebrow">Mis XV Años</p>
-    <h1 class="script mis">Mis</h1>
     <div class="script name">Cecilia Abigail</div>
     <div class="gold-rule"></div>
     <p class="intro">Como las flores en primavera, este es el comienzo de una nueva y hermosa etapa. Hay momentos en la vida que imaginamos durante mucho tiempo, y compartirlos con las personas que queremos los hace aún más especiales.<br><br>¡Te invito a celebrar mis 15 años!</p>
